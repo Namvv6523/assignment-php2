@@ -1,0 +1,31 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+
+<div class="container">
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>taikhoan/store" class="btn btn-success">Add</a>
+ <table class="table">
+ <thead>
+ <th>id</th>
+ <th>Tên đăng nhập</th>
+ <th>Mật khẩu</th>
+ <th>Action</th>
+ </thead>
+
+ <?php $__currentLoopData = $taikhoan; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <tbody>
+ <td><?php echo \htmlentities($item->id??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item->ten??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item->matkhau??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>taikhoan/update/<?php echo \htmlentities($item->id??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-primary">Edit</a>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>taikhoan/remove/<?php echo \htmlentities($item->id??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-danger">Delete</a>
+ </td>
+ </tbody>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </table>
+</div>
+
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>

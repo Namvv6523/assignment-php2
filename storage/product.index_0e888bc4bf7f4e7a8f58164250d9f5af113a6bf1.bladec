@@ -1,0 +1,29 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+ <div class="container">
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>product/store" class="btn btn-success mb-3">Add</a>
+ <table class="table">
+ <thead>
+ <th>Id</th>
+ <th>Tên sản phẩm</th>
+ <th>Giá sản phẩm</th>
+ <th>Action</th>
+ </thead>
+
+ <?php $__currentLoopData = $product; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $prd): $loop = $this->incrementLoopIndices();  ?>
+ <tbody>
+ <td><?php echo \htmlentities($prd->id??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($prd->tenSP??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($prd->gia??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>product/detail/<?php echo \htmlentities($prd->id??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-primary">Edit</a>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>product/delete/<?php echo \htmlentities($prd->id??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-danger">Delete</a>
+ </td>
+ </tbody>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </table>
+ </div>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>
